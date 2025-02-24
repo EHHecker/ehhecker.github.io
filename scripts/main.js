@@ -1,5 +1,7 @@
+/*
 const myHeading = document.querySelector("h1");
 myHeading.textContent = "Hello world!";
+*/
 
 const myImage = document.querySelector("img");
 myImage.addEventListener("click", () => {
@@ -16,18 +18,23 @@ let myHeading = document.querySelector("h1");
 
 function setUserName() {
 	const myName = prompt("Please enter your name.");
-	localStorage.setItem("name", myName);
-	myHeading.textContent = `Glasses are cool, ${myName}`;
+	if (!myName) {
+		setUserName();
+	} else {
+		localStorage.setItem("name", myName);
+		myHeading.textContent = `Glasses are cool, ${myName}`;
+	}
 }
 if (!localStorage.getItem("name")) {
 	setUserName();
 } else {
 	const storedName = localStorage.getItem("name");
-	myHeading.textContent = `glasses are cool, $(storedName)`;
+	myHeading.textContent = `Glasses are cool, ${storedName}`;
 }
 myButton.addEventListener("click", () => {
 	setUserName();
 });
+
 
 /*
 let myVariable;
